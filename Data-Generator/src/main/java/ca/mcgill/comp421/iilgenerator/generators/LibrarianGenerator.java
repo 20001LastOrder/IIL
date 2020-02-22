@@ -2,7 +2,6 @@ package ca.mcgill.comp421.iilgenerator.generators;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class LibrarianGenerator extends Generator {
@@ -84,9 +83,6 @@ public class LibrarianGenerator extends Generator {
 		return days;
 	}
 	
-	public HashSet<String> getPrimaryKeySet(){
-		return primaryKeyMap;
-	}
 	public List<Librarian> getGeneratedLibrarians(){
 		return elements.stream().map(ele -> (Librarian)ele).collect(Collectors.toList());
 	}

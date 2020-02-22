@@ -63,6 +63,25 @@ public class DatabaseInserter {
 		queries.stream().forEach(a -> System.out.println(a));
 	}
 	
+	public static void insertBooksFromFile(String filename) {
+		List<String> queries = parseFileToQuery(filename, (args)->{
+			List<String> q = new ArrayList<String>();
+			q.add(String.format("INSERT INTO Books VALUES('%s', '%s', '%s', '%s', '%s', '%s')", args[0], args[1], args[2], args[3], args[4], args[5 ]));
+			return q;
+		});
+		System.out.println("--------------------------------------------------------------------------------------");
+		queries.stream().forEach(a -> System.out.println(a));
+	}
+	
+	public static void insertAuthorsFromFile(String filename) {
+		List<String> queries = parseFileToQuery(filename, (args)->{
+			List<String> q = new ArrayList<String>();
+			q.add(String.format("INSERT INTO Authors VALUES(%s, '%s')", args[0], args[1]));
+			return q;
+		});
+		System.out.println("--------------------------------------------------------------------------------------");
+		queries.stream().forEach(a -> System.out.println(a));
+	}
 	
 	private void executeInserts(List<String> queries) {
 		Statement s = DatabaseConnector.getStatement();

@@ -4,8 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ca.mcgill.comp421.iilgenerator.generators.PatronGenerator.Patron;
-
 public class AdministratorGenerator extends Generator {
 	public static class Administrator extends GeneratedUser{
 		String iName;
@@ -58,10 +56,6 @@ public class AdministratorGenerator extends Generator {
 				numGenerated += 1;
 			}
 		}	
-	}
-	
-	public HashSet<String> getPrimaryKeySet(){
-		return primaryKeyMap;
 	}
 	
 	public List<Administrator> getGeneratedPatrons(){

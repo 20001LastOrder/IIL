@@ -7,6 +7,8 @@ import java.sql.Statement;
 import ca.mcgill.comp421.iilgenerator.database.DatabaseConnector;
 import ca.mcgill.comp421.iilgenerator.database.DatabaseInserter;
 import ca.mcgill.comp421.iilgenerator.generators.AdministratorGenerator;
+import ca.mcgill.comp421.iilgenerator.generators.AuthorGenerator;
+import ca.mcgill.comp421.iilgenerator.generators.BookGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.InstitutionGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.LibrarianGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.LibraryGenerator;
@@ -39,11 +41,21 @@ public class Main {
 		administratorGenerator.generate(5);
 		Utils.toFile("administrators.csv", administratorGenerator.getGeneratedElements());
 
+		BookGenerator bookGenerator = new BookGenerator(2040);
+		bookGenerator.generate(5);
+		Utils.toFile("books.csv", bookGenerator.getGeneratedElements());
+		
+		AuthorGenerator authorGenerator = new AuthorGenerator(2050);
+		authorGenerator.generate(5);
+		Utils.toFile("authors.csv", authorGenerator.getGeneratedElements());
+		
 //		DatabaseInserter.insertInstitutionsFromFile("institutions.csv");
 //		DatabaseInserter.insertLibrariesFromFile("libraries.csv");
 //		DatabaseInserter.insertPatronsFromFile("patrons.csv");
 //		DatabaseInserter.insertLibrarianFromFile("librarians.csv");
-		DatabaseInserter.insertAdministratorsFromFile("administrators.csv");
+//		DatabaseInserter.insertAdministratorsFromFile("administrators.csv");
+//		DatabaseInserter.insertBooksFromFile("books.csv");
+		DatabaseInserter.insertAuthorsFromFile("authors.csv");
 		System.out.println("Generation Finished");
 	}
 	

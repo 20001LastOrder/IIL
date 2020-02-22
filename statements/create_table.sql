@@ -49,11 +49,11 @@ CREATE TABLE Administrators(
 );
 
 CREATE TABLE Books(
-  isbnNumber VARCHAR(15),
-  title VARCHAR(30),
-  category VARCHAR(20),
+  isbnNumber VARCHAR(17),
+  title VARCHAR(100),
+  category VARCHAR(100),
   publicationDate DATE,
-  publisher VARCHAR(20),
+  publisher VARCHAR(100),
   description VARCHAR(500),
   PRIMARY KEY(isbnNumber)
 );
@@ -68,7 +68,7 @@ CREATE TABLE BookCopies(
   barCode VARCHAR(50),
   lName VARCHAR(100) NOT NULL,
   iName VARCHAR(100) NOT NULL,
-  isbnNumber VARCHAR(15) NOT NULL,
+  isbnNumber CHAR(17) NOT NULL,
   PRIMARY KEY(barCode),
   FOREIGN KEY(lName,iName) REFERENCES Libraries,
   FOREIGN KEY(isbnNumber) REFERENCES Books

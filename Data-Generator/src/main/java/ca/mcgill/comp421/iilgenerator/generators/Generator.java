@@ -40,6 +40,10 @@ public abstract class Generator {
 	
 	abstract void generate(int num);
 	
+	public HashSet<String> getPrimaryKeySet(){
+		return primaryKeyMap;
+	}
+	
 	public List<GeneratedElement> getGeneratedElements(){
 		return elements;
 	}

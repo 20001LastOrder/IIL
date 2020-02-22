@@ -34,7 +34,7 @@ public class InstitutionGenerator extends Generator {
 			i.iName = faker.university().name();
 			if(!primaryKeyMap.contains(i.iName)) {
 				primaryKeyMap.add(i.iName);
-				i.iAddress = faker.address().streetAddress() + ", Montreal, QC, " + faker.bothify("H#?#?#").toUpperCase();
+				i.iAddress = Utils.randomAddress(faker);
 				elements.add(i);
 				numGenerated += 1;
 			}

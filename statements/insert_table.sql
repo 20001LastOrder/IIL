@@ -61,3 +61,21 @@ INSERT INTO Administrators VALUES('krista.bosco32@gmail.com', 'Southern Howell')
 
 SELECT * FROM Users;
 SELECT * FROM Administrators;
+
+-- insert books
+INSERT INTO Books VALUES('112-3-30-907355-3', 'Françoise Sagan', 'Legend', '2018-01-24', 'Manning Publications', 'Autem nostrum aliquid officia omnis excepturi beatae. Nihil consectetur voluptas non optio. Sint quis et est sapiente maiores voluptatem praesentium. At ratione et natus omnis nihil. Magni est aspernatur veniam.');
+INSERT INTO Books VALUES('648-0-43-942465-1', 'Noli Me Tangere', 'Biography/Autobiography', '2013-12-05', 'Anova Books', 'Corrupti facere tenetur sint sit corrupti at delectus. Est dolorum quibusdam. Ratione eum consequatur sit dolorum.');
+INSERT INTO Books VALUES('783-9-79-104646-1', 'Blue Remembered Earth', 'Speech', '2015-12-29', 'Bella Books', 'Corporis nulla sed eum aut et quia unde. Animi soluta iusto. Cum ipsam consequatur adipisci. Omnis perferendis ea sit. Ratione harum autem dignissimos.');
+INSERT INTO Books VALUES('829-1-32-449156-7', 'A Darkling Plain', 'Crime/Detective', '2013-10-28', 'Barrie & Jenkins', 'Deserunt laboriosam commodi ducimus rem inventore aut quaerat. Sit magni non alias eius natus harum. Asperiores doloremque laborum provident sed est inventore.');
+INSERT INTO Books VALUES('760-9-37-234627-0', 'Where Angels Fear to Tread', 'Horror', '2019-07-16', 'Shoemaker & Hoard Publishers', 'Enim rerum ipsam fugit quos corporis dolores. Eius assumenda corporis dolor omnis voluptatem non et. Molestiae minima dicta vel esse nam cum necessitatibus. Et maiores quis laborum aliquam qui ut.');
+
+SELECT * FROM Books;
+
+-- insert authors
+INSERT INTO Authors VALUES(982, 'Mr. Denisha Wintheiser');
+INSERT INTO Authors VALUES(570, 'Arnold Koss');
+INSERT INTO Authors VALUES(871, 'Winnifred MacGyver');
+INSERT INTO Authors VALUES(98, 'Charity Schroeder');
+INSERT INTO Authors VALUES(608, 'Mrs. Justin Feil');
+
+SELECT * FROM Authors;

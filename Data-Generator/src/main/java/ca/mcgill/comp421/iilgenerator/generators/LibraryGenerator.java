@@ -1,7 +1,6 @@
 package ca.mcgill.comp421.iilgenerator.generators;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class LibraryGenerator extends Generator {

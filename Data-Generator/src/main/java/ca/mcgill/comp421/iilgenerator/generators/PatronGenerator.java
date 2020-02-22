@@ -2,7 +2,6 @@ package ca.mcgill.comp421.iilgenerator.generators;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class PatronGenerator extends Generator {
@@ -59,10 +58,6 @@ public class PatronGenerator extends Generator {
 				numGenerated += 1;
 			}
 		}	
-	}
-	
-	public HashSet<String> getPrimaryKeySet(){
-		return primaryKeyMap;
 	}
 	
 	public List<Patron> getGeneratedPatrons(){
