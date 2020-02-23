@@ -13,7 +13,7 @@ WHERE publicationdate IN
 
 -- Aggregation and 2 relations: 
 -- Find the average fine of the loans made by the patrons belong to 
--- Eastern Brown
+-- the institution "Eastern Brown"
 SELECT AVG(fine) AS avgFine
 FROM patrons P, Loans L
 WHERE P.iName = 'Eastern Brown' AND P.email = L.email
