@@ -17,8 +17,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Institutions VALUES('%s', '%s')", args[0], args[1]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertLibrariesFromFile(String filename) {
@@ -27,8 +28,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Libraries VALUES('%s', '%s', '%s')", args[0], args[1], args[2]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertPatronsFromFile(String filename) {
@@ -38,8 +40,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Patrons VALUES('%s', %s, '%s')", args[0], args[4], args[5]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertLibrarianFromFile(String filename) {
@@ -49,8 +52,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Librarians VALUES('%s', '%s', '%s', '%s')", args[0], args[4], args[5], args[6]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertAdministratorsFromFile(String filename) {
@@ -60,8 +64,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Administrators VALUES('%s', '%s')", args[0], args[4]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertBooksFromFile(String filename) {
@@ -70,8 +75,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Books VALUES('%s', '%s', '%s', '%s', '%s', '%s')", args[0], args[1], args[2], args[3], args[4], args[5 ]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertAuthorsFromFile(String filename) {
@@ -80,8 +86,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Authors VALUES(%s, '%s')", args[0], args[1]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertBookCopiesFromFile(String filename) {
@@ -90,8 +97,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO BookCopies VALUES('%s', '%s', '%s', '%s')", args[0], args[1], args[2], args[3]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertLoansFromFile(String filename) {
@@ -110,8 +118,9 @@ public class DatabaseInserter {
 			
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertWritesFromFile(String filename) {
@@ -120,8 +129,9 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Writes VALUES(%s, '%s')", args[0], args[1]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
 	public static void insertRequestsFromFile(String filename) {
@@ -130,11 +140,12 @@ public class DatabaseInserter {
 			q.add(String.format("INSERT INTO Requests VALUES('%s', '%s', '%s', '%s')", args[0], args[1], args[2], args[3]));
 			return q;
 		});
-		System.out.println("--------------------------------------------------------------------------------------");
-		queries.stream().forEach(a -> System.out.println(a));
+//		System.out.println("--------------------------------------------------------------------------------------");
+//		queries.stream().forEach(a -> System.out.println(a));
+		executeInserts(queries);
 	}
 	
-	private void executeInserts(List<String> queries) {
+	private static void executeInserts(List<String> queries) {
 		Statement s = DatabaseConnector.getStatement();
 		try {
 			for(String query : queries) {

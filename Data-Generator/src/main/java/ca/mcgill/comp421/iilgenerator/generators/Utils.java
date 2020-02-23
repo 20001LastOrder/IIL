@@ -17,7 +17,7 @@ public final class Utils {
 	}
 	
 	public static String randomName(Faker faker) {
-		return faker.name().firstName() +" "+ faker.name().lastName();
+		return (faker.name().firstName() +" "+ faker.name().lastName()).replaceAll("'", "");
 	}
 	
 	public static String randomEmail(Faker faker, String name) {
