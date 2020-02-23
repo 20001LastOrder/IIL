@@ -3,6 +3,7 @@ package ca.mcgill.comp421.iilgenerator.database;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -77,6 +78,56 @@ public class DatabaseInserter {
 		List<String> queries = parseFileToQuery(filename, (args)->{
 			List<String> q = new ArrayList<String>();
 			q.add(String.format("INSERT INTO Authors VALUES(%s, '%s')", args[0], args[1]));
+			return q;
+		});
+		System.out.println("--------------------------------------------------------------------------------------");
+		queries.stream().forEach(a -> System.out.println(a));
+	}
+	
+	public static void insertBookCopiesFromFile(String filename) {
+		List<String> queries = parseFileToQuery(filename, (args)->{
+			List<String> q = new ArrayList<String>();
+			q.add(String.format("INSERT INTO BookCopies VALUES('%s', '%s', '%s', '%s')", args[0], args[1], args[2], args[3]));
+			return q;
+		});
+		System.out.println("--------------------------------------------------------------------------------------");
+		queries.stream().forEach(a -> System.out.println(a));
+	}
+	
+	public static void insertLoansFromFile(String filename) {
+		List<String> queries = parseFileToQuery(filename, (args)->{
+			List<String> q = new ArrayList<String>();
+			Date defaultDate = new Date(0);
+			if(args[3].equals(defaultDate.toString())) {
+				// no actual return date
+				q.add(String.format("INSERT INTO Loans (loanId, startDate, requiredReturnDate, fine, hasRequest, email, barCode)"
+						+ " VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+						  args[0], args[1], args[2], args[4], args[5], args[6], args[7]));
+			}else {
+				q.add(String.format("INSERT INTO Loans VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+						  args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]));
+			}
+			
+			return q;
+		});
+		System.out.println("--------------------------------------------------------------------------------------");
+		queries.stream().forEach(a -> System.out.println(a));
+	}
+	
+	public static void insertWritesFromFile(String filename) {
+		List<String> queries = parseFileToQuery(filename, (args)->{
+			List<String> q = new ArrayList<String>();
+			q.add(String.format("INSERT INTO Writes VALUES(%s, '%s')", args[0], args[1]));
+			return q;
+		});
+		System.out.println("--------------------------------------------------------------------------------------");
+		queries.stream().forEach(a -> System.out.println(a));
+	}
+	
+	public static void insertRequestsFromFile(String filename) {
+		List<String> queries = parseFileToQuery(filename, (args)->{
+			List<String> q = new ArrayList<String>();
+			q.add(String.format("INSERT INTO Requests VALUES('%s', '%s', '%s', '%s')", args[0], args[1], args[2], args[3]));
 			return q;
 		});
 		System.out.println("--------------------------------------------------------------------------------------");

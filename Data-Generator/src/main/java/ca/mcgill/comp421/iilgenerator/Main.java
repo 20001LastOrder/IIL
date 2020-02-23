@@ -8,12 +8,16 @@ import ca.mcgill.comp421.iilgenerator.database.DatabaseConnector;
 import ca.mcgill.comp421.iilgenerator.database.DatabaseInserter;
 import ca.mcgill.comp421.iilgenerator.generators.AdministratorGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.AuthorGenerator;
+import ca.mcgill.comp421.iilgenerator.generators.BookCopyGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.BookGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.InstitutionGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.LibrarianGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.LibraryGenerator;
+import ca.mcgill.comp421.iilgenerator.generators.LoanGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.PatronGenerator;
+import ca.mcgill.comp421.iilgenerator.generators.RequestGenerator;
 import ca.mcgill.comp421.iilgenerator.generators.Utils;
+import ca.mcgill.comp421.iilgenerator.generators.WriteGenerator;
 
 public class Main {
 	public static void main(String[] args) {
@@ -49,13 +53,34 @@ public class Main {
 		authorGenerator.generate(5);
 		Utils.toFile("authors.csv", authorGenerator.getGeneratedElements());
 		
+		BookCopyGenerator bookCopyGenerator =  new BookCopyGenerator(2060, libraryGenerator, bookGenerator);
+		bookCopyGenerator.generate(5);
+		Utils.toFile("bookCopies.csv", bookCopyGenerator.getGeneratedElements());
+		
+		LoanGenerator loanGenerator =  new LoanGenerator(2070, bookCopyGenerator, patronGenerator);
+		loanGenerator.generate(5);
+		Utils.toFile("loans.csv", loanGenerator.getGeneratedElements());
+		
+		WriteGenerator writeGenerator =  new WriteGenerator(2080, authorGenerator, bookGenerator);
+		writeGenerator.generate(5);
+		Utils.toFile("writes.csv", writeGenerator.getGeneratedElements());
+		
+		RequestGenerator requestGenerator =  new RequestGenerator(2090, bookCopyGenerator, patronGenerator);
+		requestGenerator.generate(5);
+		Utils.toFile("requests.csv", requestGenerator.getGeneratedElements());
+		
 //		DatabaseInserter.insertInstitutionsFromFile("institutions.csv");
 //		DatabaseInserter.insertLibrariesFromFile("libraries.csv");
 //		DatabaseInserter.insertPatronsFromFile("patrons.csv");
 //		DatabaseInserter.insertLibrarianFromFile("librarians.csv");
 //		DatabaseInserter.insertAdministratorsFromFile("administrators.csv");
 //		DatabaseInserter.insertBooksFromFile("books.csv");
-		DatabaseInserter.insertAuthorsFromFile("authors.csv");
+//		DatabaseInserter.insertAuthorsFromFile("authors.csv");
+//		DatabaseInserter.insertBookCopiesFromFile("bookCopies.csv");
+//		DatabaseInserter.insertLoansFromFile("loans.csv");
+//		DatabaseInserter.insertWritesFromFile("writes.csv");
+		DatabaseInserter.insertRequestsFromFile("requests.csv");
+		
 		System.out.println("Generation Finished");
 	}
 	

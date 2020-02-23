@@ -20,7 +20,7 @@ DROP TABLE Patrons;
 
 DROP TABLE Institutions;
 
-DROP TABLE users;
+DROP TABLE Users;
 
 
 

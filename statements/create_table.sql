@@ -92,7 +92,7 @@ CREATE TABLE Loans
 CREATE TABLE Writes
 (
   authorId INTEGER,
-  isbnNumber varchar(15),
+  isbnNumber varchar(17),
   PRIMARY KEY(authorId, isbnNumber),
   FOREIGN KEY(authorId) REFERENCES Authors,
   FOREIGN KEY(isbnNumber) REFERENCES Books
