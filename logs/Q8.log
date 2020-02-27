@@ -1,0 +1,16 @@
+-- requiredReturnDate cannot be earlier than startDate, actualReturnDate cannot be earlier than startDate
+ALTER TABLE loans 
+ADD CONSTRAINT loandateconstraint
+CHECK (NOT(requiredReturnDate < startDate OR actualReturnDate < startDate));
+ALTER TABLE
+INSERT INTO loans Values(default, '2020-02-10', '2020-02-09', null, 0, false, 'kelley.mcglynn24@mail.com', '8-964-571-616-8');
+ERROR:  new row for relation "loans" violates check constraint "loandateconstraint"
+DETAIL:  Failing row contains (61, 2020-02-10, 2020-02-09, null, 0, f, kelley.mcglynn24@mail.com, 8-964-571-616-8).
+-- the status of a review should be either of the three string value
+ALTER TABLE Requests
+ADD CONSTRAINT requeststatus
+CHECK (status ='declined' or status = 'in review' or status = 'approved');
+ALTER TABLE
+INSERT INTO Requests VALUES('aleisha.walsh82@mail.com', '7-407-065-278-5', '2020-02-26', 'not what we want');
+ERROR:  new row for relation "requests" violates check constraint "requeststatus"
+DETAIL:  Failing row contains (aleisha.walsh82@mail.com, 7-407-065-278-5, 2020-02-26, not what we want).

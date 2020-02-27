@@ -1,0 +1,60 @@
+-- create view to record the loan information for all currently running loans
+CREATE VIEW activeLoans (email, title, lname, iname, startDate, requiredReturnDate ) AS 
+SELECT l.email, b.title, b.lname, b.iname, l.startDate, l.requiredReturnDate FROM Loans l, 
+(SELECT DISTINCT b.title, bc.barcode, bc.iname, lname FROM BookCopies bc, Books b WHERE bc.isbnNumber = b.isbnNumber) b WHERE
+b.barcode = l.barcode AND l.actualReturnDate isnull;
+CREATE VIEW
+SELECT * from activeLoans LIMIT 10;
+              email               |             title              |        lname         |                  iname                  | startdate  | requiredreturndate 
+----------------------------------+--------------------------------+----------------------+-----------------------------------------+------------+--------------------
+ moriah.funk99@mail.com           | Vanity Fair                    | Kandinsky Library    | Western Yukon Institute                 |            | 
+ refugio.langworth42@outlook.com  | Fair Stood the Wind for France | Rothko Library       | The Vandervort Academy                  |            | 
+ hai.walker15@icloud.com          | Moab Is My Washpot             | Joan Miro Library    | Corwin College                          |            | 
+ gabriele.nitzsche11@icloud.com   | Such, Such Were the Joys       | Titian Library       | South Quebec Institute                  | 2020-02-17 | 2020-03-05
+ karisa.schaden63@outlook.com     | That Good Night                | Diego Rivera Library | Fisher College                          | 2020-02-26 | 2020-03-11
+ clayton.bartoletti43@outlook.com | An Instant In The Wind         | Dali Library         | Eastern Prince Edward Island University |            | 
+ cary.berge20@outlook.com         | Paths of Glory                 | Rubens Library       | Eastern Runolfsdottir College           |            | 
+ kiyoko.balistreri25@mail.com     | Paths of Glory                 | Rubens Library       | Eastern Runolfsdottir College           | 2020-02-24 | 2020-04-06
+ lorrie.gutkowski77@outlook.com   | A Darkling Plain               | Rothko Library       | Bednar University                       | 2020-02-23 | 2020-02-28
+ jon.schneider87@icloud.com       | Things Fall Apart              | Pissarro Library     | East Yukon College                      | 2020-02-02 | 2020-02-29
+(10 rows)
+
+-- does not work, it involves multiple relations
+UPDATE activeLoans SET title='none' WHERE title='Blue Remembered Earth';
+ERROR:  cannot update view "activeloans"
+DETAIL:  Views that do not select from a single table or view are not automatically updatable.
+HINT:  To enable updating the view, provide an INSTEAD OF UPDATE trigger or an unconditional ON UPDATE DO INSTEAD rule.
+CREATE VIEW InReviewRequests(barcode, email, status) AS 
+SELECT barcode, email, status FROM Requests WHERE status='in review';
+CREATE VIEW
+SELECT * FROM InReviewRequests LIMIT 10;
+     barcode     |              email              |  status   
+-----------------+---------------------------------+-----------
+ 4-139-467-380-0 | aleisha.walsh82@mail.com        | in review
+ 8-365-552-680-3 | kip.olson27@mail.com            | in review
+ 1-140-768-948-2 | joaquin.ritchie09@mail.com      | in review
+ 6-362-532-824-6 | cathern.muller79@outlook.com    | in review
+ 9-975-511-734-3 | gretchen.mckenzie39@gmail.com   | in review
+ 6-092-929-853-2 | frederic.glover07@gmail.com     | in review
+ 3-878-721-383-3 | abigail.harvey48@gmail.com      | in review
+ 7-687-095-859-8 | lane.lang11@icloud.com          | in review
+ 7-687-095-859-8 | theodora.schulist42@outlook.com | in review
+ 6-090-060-661-7 | jan.bradtke26@outlook.com       | in review
+(10 rows)
+
+--fail
+UPDATE InReviewRequests SET email = 'doesnot.exist@gmail.com' WHERE email='kip.olson27@mail.com';
+ERROR:  insert or update on table "requests" violates foreign key constraint "requests_email_fkey"
+DETAIL:  Key (email)=(doesnot.exist@gmail.com) is not present in table "patrons".
+--success
+UPDATE InReviewRequests SET email = 'shaunna.heller15@gmail.com' WHERE email='kip.olson27@mail.com';
+UPDATE 1
+--success
+UPDATE InReviewRequests SET status = 'approved';
+UPDATE 11
+-- nothing anymore
+SELECT * FROM InReviewRequests LIMIT 10;
+ barcode | email | status 
+---------+-------+--------
+(0 rows)
+
