@@ -10,3 +10,16 @@ SELECT COUNT(*) as PatronCount From Patrons;
 SELECT COUNT(*) as UserCount From Users;
 SELECT COUNT(*) as RequestCount From Requests;
 SELECT COUNT(*) as WriteCount From Writes;
+
+SELECT * FROM Authors LIMIT 10;
+SELECT * FROM BookCopies LIMIT 10;
+SELECT * FROM Books LIMIT 10;
+SELECT * FROM Institutions LIMIT 10;
+SELECT * FROM Libraries LIMIT 10;
+SELECT * FROM Librarians LIMIT 10;
+SELECT * FROM Loans LIMIT 10;
+SELECT * FROM Administrators LIMIT 10;
+SELECT * FROM Patrons LIMIT 10;
+SELECT * FROM Users LIMIT 10;
+SELECT * FROM Requests LIMIT 10;
+SELECT * FROM Writes LIMIT 10;
