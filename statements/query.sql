@@ -53,7 +53,6 @@ WHERE isbnNumber IN (SELECT isbnNumber
                      FROM Books
                      WHERE title = 'A Time to Kill' )
 LIMIT 10
-<<<<<<< HEAD:statements/zq_query.sql
 ;
 
 
@@ -61,6 +60,3 @@ LIMIT 10
 
 
 
-=======
-;
->>>>>>> 7a9ff6435c1694cbe59d079c59b1743049bbb5b9:statements/query.sql
