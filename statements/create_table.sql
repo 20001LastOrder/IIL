@@ -59,7 +59,7 @@ CREATE TABLE Books(
 );
 
 CREATE TABLE Authors(
-  authorId INTEGER,
+  authorId SERIAL,
   aName VARCHAR(100),
   PRIMARY KEY(authorId)
 );
@@ -76,7 +76,7 @@ CREATE TABLE BookCopies(
 
 CREATE TABLE Loans
 (
-  loanId INTEGER,
+  loanId SERIAL,
   startDate DATE,
   requiredReturnDate DATE,
   actualReturnDate DATE,
