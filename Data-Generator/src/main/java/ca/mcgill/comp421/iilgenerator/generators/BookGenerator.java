@@ -40,7 +40,7 @@ public class BookGenerator extends Generator {
 			b.isbnNumber = faker.numerify("###-#-##-######-#");
 			if(!primaryKeyMap.contains(b.isbnNumber)) {
 				primaryKeyMap.add(b.isbnNumber);
-				b.title = faker.book().title().replaceAll("'", "");
+				b.title = faker.book().title();
 				b.category = faker.book().genre();
 				b.publisher = faker.book().publisher();
 				b.description = faker.lorem().paragraph(3);
