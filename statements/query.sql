@@ -1,3 +1,27 @@
+SELECT books.title
+FROM books
+WHERE isbnNumber IN (SELECT bookcopies.isbnNumber
+					From loans, bookcopies
+					WHERE (loans.barcode = bookcopies.barcode AND loans.actualreturndate isnull))
+limit 10;
+
+
+SELECT lname, iname
+FROM libraries
+WHERE iname= 'North Quebec College'
+limit 10;
+
+
+SELECT DISTINCT authors.aname
+FROM writes, authors
+WHERE writes.authorid = authors.authorid AND writes.authorid IN(
+	SELECT authorid
+	FROM writes
+	GROUP BY authorid
+	HAVING COUNT(*) >4
+)
+limit 10;
+
 -- Aggregation, grouping and subqueries: 
 -- Find the name and publication date of the earliest published book 
 -- of each category of books. Only consider categories where there are more than
@@ -29,6 +53,7 @@ WHERE isbnNumber IN (SELECT isbnNumber
                      FROM Books
                      WHERE title = 'A Time to Kill' )
 LIMIT 10
+<<<<<<< HEAD:statements/zq_query.sql
 ;
 
 
@@ -36,3 +61,6 @@ LIMIT 10
 
 
 
+=======
+;
+>>>>>>> 7a9ff6435c1694cbe59d079c59b1743049bbb5b9:statements/query.sql

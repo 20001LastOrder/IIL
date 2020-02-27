@@ -168,6 +168,8 @@ public class DatabaseInserter {
 			// the first line is header, discard
 			reader.readLine();
 			while((line = reader.readLine()) != null) {
+				// replace quotes to double quotes
+				line = line.replace("'", "''");
 				queries.addAll(converter.apply(line.split(";")));
 			}
 			reader.close();

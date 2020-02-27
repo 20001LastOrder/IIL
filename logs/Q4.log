@@ -1,0 +1,252 @@
+SELECT COUNT(*) as AuthorCount From Authors;
+ authorcount 
+-------------
+         300
+(1 row)
+
+SELECT COUNT(*) as BookCopyCount From BookCopies;
+ bookcopycount 
+---------------
+           400
+(1 row)
+
+SELECT COUNT(*) as BookCount From Books;
+ bookcount 
+-----------
+       200
+(1 row)
+
+SELECT COUNT(*) as InstitutionCount From Institutions;
+ institutioncount 
+------------------
+               30
+(1 row)
+
+SELECT COUNT(*) as LibraryCount From Libraries;
+ librarycount 
+--------------
+           60
+(1 row)
+
+SELECT COUNT(*) as LibrarianCount From Librarians;
+ librariancount 
+----------------
+            100
+(1 row)
+
+SELECT COUNT(*) as LoanCount From Loans;
+ loancount 
+-----------
+       300
+(1 row)
+
+SELECT COUNT(*) as AdministratorCount From Administrators;
+ administratorcount 
+--------------------
+                 40
+(1 row)
+
+SELECT COUNT(*) as PatronCount From Patrons;
+ patroncount 
+-------------
+         300
+(1 row)
+
+SELECT COUNT(*) as UserCount From Users;
+ usercount 
+-----------
+       440
+(1 row)
+
+SELECT COUNT(*) as RequestCount From Requests;
+ requestcount 
+--------------
+          100
+(1 row)
+
+SELECT COUNT(*) as WriteCount From Writes;
+ writecount 
+------------
+        400
+(1 row)
+
+SELECT * FROM Authors LIMIT 10;
+ authorid |         aname          
+----------+------------------------
+      982 | Mr. Denisha Wintheiser
+      570 | Arnold Koss
+      871 | Winnifred MacGyver
+       98 | Charity Schroeder
+      608 | Mrs. Justin Feil
+      517 | Patrick Bernhard
+      579 | Zackary Stracke
+      753 | Houston Ruecker
+      521 | Mrs. George Robel
+      568 | Huong Rosenbaum
+(10 rows)
+
+SELECT * FROM BookCopies LIMIT 10;
+     barcode     |        lname         |                  iname                  |    isbnnumber     
+-----------------+----------------------+-----------------------------------------+-------------------
+ 0-779-774-803-6 | Donatello Library    | Corwin College                          | 916-8-46-781853-1
+ 1-496-774-035-0 | Gauguin Library      | The Parisian                            | 546-6-61-381237-9
+ 6-092-929-853-2 | Warhol Library       | Western Yukon Institute                 | 865-8-93-722874-4
+ 1-962-473-990-0 | Titian Library       | South Quebec Institute                  | 027-4-42-876998-1
+ 0-426-141-379-1 | Titian Library       | South Quebec Institute                  | 665-4-49-020583-6
+ 8-044-968-401-9 | Joan Miro Library    | Corwin College                          | 407-9-55-400165-2
+ 3-181-622-141-0 | Titian Library       | South Quebec Institute                  | 138-7-10-468290-7
+ 2-886-988-858-1 | Joan Miro Library    | Corwin College                          | 402-1-86-661202-8
+ 7-371-052-266-6 | Diego Rivera Library | Eastern Prince Edward Island University | 882-4-31-274351-4
+ 5-117-024-968-9 | Donatello Library    | Corwin College                          | 407-9-55-400165-2
+(10 rows)
+
+SELECT * FROM Books LIMIT 10;
+    isbnnumber     |           title            |        category         | publicationdate |          publisher           |                                                                                                     description                                                                                                     
+-------------------+----------------------------+-------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 112-3-30-907355-3 | Françoise Sagan            | Legend                  | 2018-01-28      | Manning Publications         | Autem nostrum aliquid officia omnis excepturi beatae. Nihil consectetur voluptas non optio. Sint quis et est sapiente maiores voluptatem praesentium. At ratione et natus omnis nihil. Magni est aspernatur veniam.
+ 648-0-43-942465-1 | Noli Me Tangere            | Biography/Autobiography | 2013-12-09      | Anova Books                  | Corrupti facere tenetur sint sit corrupti at delectus. Est dolorum quibusdam. Ratione eum consequatur sit dolorum.
+ 783-9-79-104646-1 | Blue Remembered Earth      | Speech                  | 2016-01-02      | Bella Books                  | Corporis nulla sed eum aut et quia unde. Animi soluta iusto. Cum ipsam consequatur adipisci. Omnis perferendis ea sit. Ratione harum autem dignissimos.
+ 829-1-32-449156-7 | A Darkling Plain           | Crime/Detective         | 2013-11-02      | Barrie & Jenkins             | Deserunt laboriosam commodi ducimus rem inventore aut quaerat. Sit magni non alias eius natus harum. Asperiores doloremque laborum provident sed est inventore.
+ 760-9-37-234627-0 | Where Angels Fear to Tread | Horror                  | 2019-07-20      | Shoemaker & Hoard Publishers | Enim rerum ipsam fugit quos corporis dolores. Eius assumenda corporis dolor omnis voluptatem non et. Molestiae minima dicta vel esse nam cum necessitatibus. Et maiores quis laborum aliquam qui ut.
+ 023-5-13-329672-0 | From Here to Eternity      | Classic                 | 2018-08-05      | Packt Publishing             | Sunt sit est dolorem. Ducimus molestiae magnam distinctio dolor et. Error et deserunt molestiae. Officiis voluptatibus eum vero.
+ 522-0-38-297513-7 | The Golden Bowl            | Realistic fiction       | 2018-08-02      | Ignatius Press               | Et enim explicabo optio veritatis ullam consequatur. Sint voluptatem similique nobis rerum. Suscipit laudantium eos voluptatem consectetur doloribus dolorem maiores. Est dolorum voluptas consequatur.
+ 260-0-73-891367-0 | That Good Night            | Science fiction         | 2015-12-01      | Nauka                        | Voluptas qui repellat ipsum in. Eveniet ipsum provident maiores et molestiae. Est sint non. Excepturi aspernatur rerum minus et.
+ 506-7-23-645168-2 | Shall not Perish           | Mystery                 | 2015-12-14      | Reed Publishing              | Vel suscipit laborum iste et omnis consequuntur ipsam. Qui id quae commodi nisi. Modi fugiat dolor aut ducimus veniam dignissimos.
+ 235-1-36-605402-4 | Sleep the Brave            | Folklore                | 2011-01-06      | Barrie & Jenkins             | Sed recusandae pariatur vero quae et at et. Ipsam maxime cumque. Accusantium nam rem qui.
+(10 rows)
+
+SELECT * FROM Institutions LIMIT 10;
+                   iname                   |                       iaddress                        
+-------------------------------------------+-------------------------------------------------------
+ The Parisian                              | 472 Perry Burgs Suite 670, Montreal, QC, H0F6T5
+ West Newfoundland and Labrador University | 28763 Buckridge Road Suite 801, Montreal, QC, H6E5L4
+ East Krajcik Academy                      | 1741 Geoffrey Isle Apt. 353, Montreal, QC, H2Q8O0
+ South Ontario Institute                   | 36126 Stracke Glens Suite 730, Montreal, QC, H3Z7V5
+ Northern Streich University               | 62648 Balistreri Run Apt. 366, Montreal, QC, H3X5Q7
+ North Quebec College                      | 52476 Schuster Garden Suite 584, Montreal, QC, H2V2Q7
+ Goodwin Institute                         | 2615 Gustavo Squares Suite 072, Montreal, QC, H8Q3T4
+ Eastern Brown                             | 6221 Trantow Harbors Suite 528, Montreal, QC, H2N5I3
+ East Boehm Academy                        | 95208 Cassondra Well Suite 744, Montreal, QC, H6X3Z5
+ Hirthe University                         | 766 Jacobson Walks Apt. 593, Montreal, QC, H9V6J2
+(10 rows)
+
+SELECT * FROM Libraries LIMIT 10;
+        lname         |                   iname                   |                   laddress                   
+----------------------+-------------------------------------------+----------------------------------------------
+ Gauguin Library      | The Parisian                              | 6231 James Cove, Montreal, QC, H9J1T1
+ Da Vinci Library     | West Newfoundland and Labrador University | 43330 Coralie Passage, Montreal, QC, H2P0K3
+ Bernini Library      | East Krajcik Academy                      | 6514 Georgie Mount, Montreal, QC, H1B9B4
+ Dali Library         | South Ontario Institute                   | 017 Ross Plains, Montreal, QC, H1C6G7
+ Seurat Library       | Northern Streich University               | 51952 Buckridge Shores, Montreal, QC, H2R4J0
+ Michelangelo Library | North Quebec College                      | 1785 Floyd Glen, Montreal, QC, H5W9H1
+ Cassatt Library      | Goodwin Institute                         | 854 Lorette Summit, Montreal, QC, H2B6S6
+ Ansel Adams Library  | Eastern Brown                             | 77769 Goldner Lock, Montreal, QC, H2Z3R6
+ Da Vinci Library     | East Boehm Academy                        | 737 Rico Mount, Montreal, QC, H1S1Z2
+ Kandinsky Library    | Hirthe University                         | 0000 Lizzie Junction, Montreal, QC, H5F5F5
+(10 rows)
+
+SELECT * FROM Librarians LIMIT 10;
+             email              | workingdays |                  iname                  |        lname         
+--------------------------------+-------------+-----------------------------------------+----------------------
+ lacy.wyman83@outlook.com       | MR          | Corwin College                          | Rubens Library
+ otha.kunze64@gmail.com         | MTWF        | Fisher College                          | Diego Rivera Library
+ preston.bogisich67@icloud.com  | M           | Corwin University                       | Pissarro Library
+ eldon.orn00@outlook.com        | MF          | Eastern Brown                           | Ansel Adams Library
+ tom.dicki15@gmail.com          | TWF         | Southern Senger College                 | Donatello Library
+ estrella.padberg31@outlook.com | MTWR        | Eastern Brown                           | Durer Library
+ theodore.watsica81@gmail.com   | W           | West Legros                             | Warhol Library
+ lecia.dare02@outlook.com       | TWRF        | Eastern Brown                           | Ansel Adams Library
+ inez.weimann15@icloud.com      | MTRF        | Eastern Prince Edward Island University | Dali Library
+ kasey.macejkovic30@outlook.com | MTWR        | The Vandervort Academy                  | Rothko Library
+(10 rows)
+
+SELECT * FROM Loans LIMIT 10;
+ loanid | startdate  | requiredreturndate | actualreturndate | fine | hasrequest |             email              |     barcode     
+--------+------------+--------------------+------------------+------+------------+--------------------------------+-----------------
+ 415510 | 2018-11-23 | 2018-12-05         | 2018-12-10       |   25 | f          | hiram.kessler10@icloud.com     | 8-525-215-734-7
+ 892066 | 2020-02-17 | 2020-04-03         |                  |    0 | f          | ralph.mueller97@outlook.com    | 8-964-571-616-8
+ 279097 | 2019-07-04 | 2019-07-28         | 2019-07-10       |    0 | f          | stefanie.glover92@outlook.com  | 1-127-145-882-8
+ 342993 | 2020-02-04 | 2020-04-02         |                  |    0 | t          | franchesca.cormier92@gmail.com | 8-659-702-075-2
+ 214333 | 2020-02-25 | 2020-03-03         |                  |    0 | f          | louis.ullrich68@icloud.com     | 3-656-216-181-6
+ 223827 | 2017-11-08 | 2017-12-21         | 2018-01-05       |   70 | f          | bula.schamberger73@icloud.com  | 3-386-006-026-7
+ 112493 | 2018-06-12 | 2018-06-24         | 2018-06-20       |    0 | t          | gussie.kemmer07@mail.com       | 6-606-637-494-1
+ 770673 | 2020-02-10 | 2020-02-12         | 2020-02-12       |    0 | f          | clementine.o'hara12@icloud.com | 8-365-552-680-3
+ 114414 | 2019-06-26 | 2019-06-28         | 2019-06-26       |    0 | t          | beau.rath46@mail.com           | 8-525-215-734-7
+ 386790 | 2017-06-30 | 2017-07-31         | 2017-07-05       |    0 | t          | eve.conn99@gmail.com           | 8-132-555-323-5
+(10 rows)
+
+SELECT * FROM Administrators LIMIT 10;
+              email              |            iname            
+---------------------------------+-----------------------------
+ bo.ondricka13@gmail.com         | Corwin College
+ tambra.bailey02@icloud.com      | Haag Institute
+ richelle.lubowitz92@outlook.com | South Ontario Institute
+ harold.nienow43@icloud.com      | Northern Streich University
+ krista.bosco32@gmail.com        | Southern Schuster Institute
+ jacques.bailey82@gmail.com      | Corwin University
+ winfred.marquardt54@mail.com    | The Green
+ denisha.vandervort45@icloud.com | North Ontario Institute
+ maynard.kunze98@outlook.com     | Southern Schuster Institute
+ andria.littel64@icloud.com      | Fisher College
+(10 rows)
+
+SELECT * FROM Patrons LIMIT 10;
+            email             | maxbooks |          iname          
+------------------------------+----------+-------------------------
+ jerold.leffler77@mail.com    |        8 | South Ontario Institute
+ javier.schuppe13@icloud.com  |        5 | Pollich College
+ eldon.marks45@outlook.com    |        6 | Western Yukon Institute
+ donn.mckenzie52@mail.com     |       14 | Southern Senger College
+ michal.hoeger93@mail.com     |       13 | Southern Senger College
+ vada.gusikowski66@icloud.com |       12 | South Quebec Institute
+ andrew.quigley15@outlook.com |        9 | East Yukon College
+ ima.kemmer13@mail.com        |       12 | East Krajcik Academy
+ alyse.denesik11@outlook.com  |        7 | South Ontario Institute
+ bobby.gutmann76@mail.com     |       14 | Bednar University
+(10 rows)
+
+SELECT * FROM Users LIMIT 10;
+            email             |      uname      |  phonenumber   |                       uaddress                       
+------------------------------+-----------------+----------------+------------------------------------------------------
+ jerold.leffler77@mail.com    | Jerold Leffler  | 017-172-3505   | 0029 Lockman Mission Apt. 364, Montreal, QC, H0C6E4
+ javier.schuppe13@icloud.com  | Javier Schuppe  | 1-718-559-8625 | 81973 Flora Flats Suite 063, Montreal, QC, H9V5G0
+ eldon.marks45@outlook.com    | Eldon Marks     | 1-672-470-7905 | 416 Hector Dale Apt. 439, Montreal, QC, H1A1P3
+ donn.mckenzie52@mail.com     | Donn McKenzie   | 253-894-0794   | 16032 Pollich Place Apt. 822, Montreal, QC, H3S1Q7
+ michal.hoeger93@mail.com     | Michal Hoeger   | 1-523-884-8186 | 64974 Melinda Circles Apt. 418, Montreal, QC, H0I6B3
+ vada.gusikowski66@icloud.com | Vada Gusikowski | 312-731-5719   | 3350 Darline Plains Apt. 803, Montreal, QC, H9G9F7
+ andrew.quigley15@outlook.com | Andrew Quigley  | 1-062-731-2874 | 780 Sage Knolls Suite 503, Montreal, QC, H5X8Q6
+ ima.kemmer13@mail.com        | Ima Kemmer      | 281-115-2293   | 375 Weber Road Apt. 838, Montreal, QC, H7X9K4
+ alyse.denesik11@outlook.com  | Alyse Denesik   | 587-487-1446   | 72302 Ricarda Isle Suite 094, Montreal, QC, H6R8H2
+ bobby.gutmann76@mail.com     | Bobby Gutmann   | 255-010-0203   | 9782 Cormier Falls Apt. 596, Montreal, QC, H0Y1R8
+(10 rows)
+
+SELECT * FROM Requests LIMIT 10;
+             email             |     barcode     |    date    |  status   
+-------------------------------+-----------------+------------+-----------
+ marlon.williamson74@gmail.com | 0-426-141-379-1 | 2020-01-04 | approved
+ daysi.mueller74@icloud.com    | 7-059-565-807-4 | 2018-01-22 | declined
+ cary.berge20@outlook.com      | 3-330-031-431-9 | 2018-05-31 | approved
+ bradley.kihn01@mail.com       | 6-405-464-995-8 | 2017-12-16 | in review
+ sharen.wuckert11@mail.com     | 5-630-452-441-7 | 2016-06-06 | approved
+ morgan.leuschke86@mail.com    | 2-260-723-989-0 | 2017-12-05 | approved
+ shaunna.heller15@gmail.com    | 1-660-491-041-1 | 2017-04-13 | approved
+ sabina.abbott70@mail.com      | 7-856-916-393-3 | 2016-02-28 | declined
+ lindsay.kautzer89@mail.com    | 0-084-786-078-8 | 2016-06-09 | declined
+ arianne.cartwright11@mail.com | 5-083-043-397-9 | 2016-09-25 | approved
+(10 rows)
+
+SELECT * FROM Writes LIMIT 10;
+ authorid |    isbnnumber     
+----------+-------------------
+      818 | 298-7-21-286262-1
+      390 | 789-5-78-530848-3
+      825 | 662-7-49-902151-9
+      566 | 977-6-25-761397-7
+      561 | 776-4-60-458524-0
+       68 | 865-8-93-722874-4
+      902 | 662-7-49-902151-9
+      557 | 134-0-45-519992-2
+      133 | 164-6-53-219452-9
+      205 | 704-0-70-222312-5
+(10 rows)
+

@@ -59,7 +59,7 @@ CREATE TABLE Books(
 );
 
 CREATE TABLE Authors(
-  authorId INTEGER,
+  authorId SERIAL,
   aName VARCHAR(100),
   PRIMARY KEY(authorId)
 );
@@ -76,7 +76,7 @@ CREATE TABLE BookCopies(
 
 CREATE TABLE Loans
 (
-  loanId INTEGER,
+  loanId SERIAL,
   startDate DATE,
   requiredReturnDate DATE,
   actualReturnDate DATE,
@@ -104,7 +104,7 @@ CREATE TABLE Requests
   email varchar(100),
   barCode varchar(50),
   date DATE,
-  status varchar(20),
+  status varchar(20) NOT NULL,
   PRIMARY KEY(email, barCode),
   FOREIGN KEY(email) REFERENCES Patrons,
   FOREIGN KEY(barCode) REFERENCES BookCopies
