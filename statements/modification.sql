@@ -24,7 +24,6 @@ WHERE iname = 'Northern Stretch University' OR iname = 'East Krajcik Academy';
 -- This command will be used for next deliverable 
 INSERT INTO Loans(barCode, email, hasRequest) (
 	SELECT barCode, email, 'true' FROM Requests WHERE status = 'approved'
-
 );
 
 -- Delete every approved request. 

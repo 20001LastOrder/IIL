@@ -104,7 +104,7 @@ CREATE TABLE Requests
   email varchar(100),
   barCode varchar(50),
   date DATE,
-  status varchar(20),
+  status varchar(20) NOT NULL,
   PRIMARY KEY(email, barCode),
   FOREIGN KEY(email) REFERENCES Patrons,
   FOREIGN KEY(barCode) REFERENCES BookCopies
