@@ -23,7 +23,7 @@ WHERE iname = 'Northern Stretch University' OR iname = 'East Krajcik Academy';
 -- Create a loan for all approved requests and set them hasRequests to True
 -- This command will be used for next deliverable 
 INSERT INTO Loans(barCode, email, hasRequest) (
-	SELECT barCode, email, 'true' FROM Requests WHERE status = 'approved';
+	SELECT barCode, email, 'true' FROM Requests WHERE status = 'approved'
 
 )
 
