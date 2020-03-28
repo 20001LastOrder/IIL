@@ -1,4 +1,4 @@
-package ca.mcgill.comp421.iilgenerator.database;
+package ca.mcgill.comp421.iil.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
