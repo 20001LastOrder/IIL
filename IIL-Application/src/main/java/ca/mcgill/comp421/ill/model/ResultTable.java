@@ -1,5 +1,8 @@
 package ca.mcgill.comp421.ill.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -67,6 +70,50 @@ public class ResultTable {
 			at.addRule();
 		}
 		return at.render();
+	}
+	
+	public List<List<String>> toList(){
+		List<List<String>> list = new ArrayList<List<String>>();
+		
+		for(String key : table.keySet()) {
+			List<String> column = new ArrayList<String>();
+			column.add(key);
+			column.addAll(table.get(key).stream().map(a -> a!=null? a.toString() : "").collect(Collectors.toList()));
+			list.add(column);
+		}
+		
+		return list;
+	}
+	
+	public boolean toCsv(String filename) {
+		boolean success = false;
+		try {
+			PrintWriter writer = new PrintWriter(new File(filename));
+			List<List<String>> formatedTable = toList();
+			StringBuilder output = new StringBuilder();
+			
+			if(formatedTable.size() > 0) {
+				for(int i = 0; i < formatedTable.get(0).size(); i++) {
+					for(int j = 0; j < formatedTable.size() - 1; j++) {
+						output.append(formatedTable.get(j).get(i) + ",");
+					}
+					
+					if(formatedTable.size() > 0) {
+						output.append(formatedTable.get(formatedTable.size() - 1).get(i));
+						output.append("\n");
+
+					}		
+				}
+				writer.write(output.toString());
+				writer.close();
+				success = true;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return success;
 	}
 	
 }

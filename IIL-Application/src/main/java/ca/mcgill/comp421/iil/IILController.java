@@ -113,6 +113,18 @@ public class IILController {
 		return resultToReturn;
 	}
 	
+	/**
+	 * @author Percy
+	 * @param email: String email of the new patron
+	 * @param uName: String name of the new patron
+	 * @param phoneNumber: String phone number of the new patron
+	 * @param uAddress: String address of the new patron
+	 * @param iname: String the new institution the new patron belongs to
+	 * @return: String information about the insertion
+	 * 
+	 * Try to add a new patron by adding a new user and then a new patron. First verify if the institution exists, if not, then 
+	 * do not insert anything
+	 */
 	public String addNewPatron(String email, String uName,  String phoneNumber,String uAddress, String iname) {
 		String resultToReturn = "";
 		ResultSet result = null;
@@ -143,6 +155,14 @@ public class IILController {
 		return resultToReturn;
 	}
 	
+	
+	/**
+	 * @author Percy
+	 * @param email: String email of the new patron
+	 * @return: ResultTable: the return table from the sql database
+	 * 
+	 * This action finds all loan history for a given patron
+	 */
 	public ResultTable getAllLoansForPatron(String email) {
 		ResultSet result = null;
 		ResultTable table = null;

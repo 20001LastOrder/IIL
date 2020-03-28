@@ -16,6 +16,7 @@ public final class IILApplication {
 			getController();
 			ResultTable result = controller.getAllLoansForPatron("trenton.kautzer84@mail.com");
 			System.out.println(result);
+			result.toCsv("test.csv");
 		}finally {
 			DatabaseConnector.close();
 		}
@@ -57,9 +58,4 @@ public final class IILApplication {
 			DatabaseConnector.closeStatement(s);
 		}
 	}
-
-	
-
-
-
 }
