@@ -95,8 +95,12 @@ public class IILController {
 				catch (SQLException e)
 				{
 					// if the request is already existed in the database, prompt a error message to user
+                    result.close();
+                    DatabaseConnector.closeStatement(stat);
 					resultToReturn = "There is already a request made by " + email + " on the book: " + isbn;
+					return resultToReturn;
 				}
+
 				resultToReturn = "The request on the book " + isbn + " has been made successfully by " + email;
 			}
 			else
