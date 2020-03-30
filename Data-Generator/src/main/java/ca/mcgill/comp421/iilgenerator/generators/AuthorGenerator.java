@@ -34,6 +34,7 @@ public class AuthorGenerator extends Generator {
 			a.autherId = faker.random().nextInt(1000);
 			if(!primaryKeyMap.contains(a.autherId+"")) {
 				primaryKeyMap.add(a.autherId+"");
+				// do not want any ' in the database
 				a.aName = faker.book().author();
 				elements.add(a);
 				numGenerated += 1;

@@ -86,7 +86,8 @@ CREATE TABLE Loans
   barCode varchar(50) NOT NULL,
   PRIMARY KEY(loanid),
   FOREIGN KEY(email) REFERENCES Patrons,
-  FOREIGN KEY(barCode) REFERENCES BookCopies
+  FOREIGN KEY(barCode) REFERENCES BookCopies,
+  CONSTRAINT loandateconstraint CHECK (NOT(requiredReturnDate < startDate OR actualReturnDate < startDate))
 );
 
 CREATE TABLE Writes
@@ -107,6 +108,7 @@ CREATE TABLE Requests
   status varchar(20) NOT NULL,
   PRIMARY KEY(email, barCode),
   FOREIGN KEY(email) REFERENCES Patrons,
-  FOREIGN KEY(barCode) REFERENCES BookCopies
+  FOREIGN KEY(barCode) REFERENCES BookCopies,
+  CONSTRAINT requeststatus CHECK (status ='declined' or status = 'in review' or status = 'approved')
 );
 
