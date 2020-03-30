@@ -254,11 +254,22 @@ public class IILController {
 		
 	  }
 
-	  
+	  public ResultTable customerQuery(List<String> columns, String query) {
+		  ResultSet result = null;
+			ResultTable table = null;
+			Statement stat = DatabaseConnector.getStatement();
 
-
-
-
-
-
+			try {
+				result = stat.executeQuery(query);
+				table = new ResultTable(columns);
+				table.loadResult(result);
+				result.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				DatabaseConnector.closeStatement(stat);
+			}
+		
+			return table;
+	  }
 }
