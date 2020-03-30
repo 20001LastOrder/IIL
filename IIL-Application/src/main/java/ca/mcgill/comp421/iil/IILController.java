@@ -17,7 +17,7 @@ public class IILController {
 	 *     a book name
 	 *     Ex: 'Tiger! Tiger!'
 	 * Output:
-	 *     Find the name of the institutions and the libraries belong to them which have
+	 *     Find the name of the institutions and the libraries that belong to them which have
 	 *     the requested book. Show all the libraries that satisfies this query.
 	 * @param bookname the name of book requested
 	 */
@@ -188,5 +188,77 @@ public class IILController {
 	
 		return table;
 	}
+
+
+	/**
+	 * @author Dalin
+	 * @return: Number of affected tuples
+	 * 
+	 * This command deletes every approved request.
+	 */
+
+	 public String deleteDeclinedRequests() {
+		String resultToReturn = null;
+		Statement stat = DatabaseConnector.getStatement();
+		int count = 0;
+
+		try {
+			count = stat.executeUpdate("DELETE FROM requests WHERE status = 'declined'");
+
+			resultToReturn = count + "tuples deleted!";
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resultToReturn = "Error: Deleting requests failed";
+
+		} finally {
+			DatabaseConnector.closeStatement(stat);
+		}
+
+		return resultToReturn;
+	 }
+
+	 /**
+	  * @author Dalin
+	  * @param approved: Boolean is true if approved, false if declined
+	  * @param pEmail: String email linked to a specific request
+	  * @param pBarCode: String barcode of the requested book
+	  * @return Integer representing the number of affected tuples.
+	  *
+	  * This command updates the status of a request.
+	  */
+
+	  public String updateRequest(String pEmail, String pBarCode, boolean approved) {
+		String resultToReturn = null;
+		Statement stat = DatabaseConnector.getStatement();
+
+		try {
+			if(approved) {
+				stat.executeUpdate(String.format("UPDATE requests SET status = 'approved' WHERE email = '%s' and barCode = '%s' ", pEmail, pBarCode));
+				resultToReturn = "Request approved!";
+			}
+
+			else {
+				stat.executeUpdate(String.format("UPDATE requests SET status = 'declined' WHERE email = '%s' and barCode = '%s' ", pEmail, pBarCode));
+				resultToReturn = "Request declined!";
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			resultToReturn = "Error: Updating request failed";
+
+		} finally {
+			DatabaseConnector.closeStatement(stat);
+		}
+
+		return resultToReturn;
+		
+	  }
+
+	  
+
+
+
+
+
 
 }
