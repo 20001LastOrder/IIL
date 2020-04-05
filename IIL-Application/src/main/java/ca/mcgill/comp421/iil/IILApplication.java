@@ -14,16 +14,12 @@ public final class IILApplication {
 	public static void main(String[] args) {
 		initializeDatabase(args[0], args[1], args[2]);
 		try {
-			getController();
-//			ResultTable result = controller.getAllLoansForPatron("trenton.kautzer84@mail.com");
-//			System.out.println(result);
-			performQueriesForVisualization();
-			System.out.println("Finished successfully");
+			controller = getController();
+			System.out.println(controller.updateRequest("bradley.kihn01@mail.com", "6-405-464-995-8", false));
+			System.out.println(controller.deleteDeclinedRequests());
 		}finally {
 			DatabaseConnector.close();
 		}
-
-
 	}
 	
 	public static void initializeDatabase(String address, String username, String password) {

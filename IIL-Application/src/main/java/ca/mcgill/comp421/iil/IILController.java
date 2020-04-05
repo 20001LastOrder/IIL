@@ -205,7 +205,7 @@ public class IILController {
 		try {
 			count = stat.executeUpdate("DELETE FROM requests WHERE status = 'declined'");
 
-			resultToReturn = count + "tuples deleted!";
+			resultToReturn = count + " tuples deleted!";
 
 		} catch (SQLException e) {
 			e.printStackTrace();
