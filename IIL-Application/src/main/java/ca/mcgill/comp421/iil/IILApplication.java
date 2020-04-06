@@ -15,8 +15,9 @@ public final class IILApplication {
 		initializeDatabase(args[0], args[1], args[2]);
 		try {
 			controller = getController();
-			System.out.println(controller.updateRequest("bradley.kihn01@mail.com", "6-405-464-995-8", false));
-			System.out.println(controller.deleteDeclinedRequests());
+			System.out.println(controller.findBookLocation("Tiger! Tiger!").toString());
+			//System.out.println(controller.updateRequest("bradley.kihn01@mail.com", "6-405-464-995-8", false));
+			//System.out.println(controller.deleteDeclinedRequests());
 		}finally {
 			DatabaseConnector.close();
 		}

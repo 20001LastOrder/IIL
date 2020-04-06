@@ -71,8 +71,12 @@ public class SwingSearchApp extends Panel implements ActionListener {
     }  
     static int i = 0;
     public void actionPerformed(ActionEvent e) {  
-    	GUI.instance.setPanel(new SwingSearchApp2());
-    }  
+    	if(e.getSource() == btn)
+        GUI.instance.setPanel(new SwingSearchApp2());
+    }
+
+
+
     //Running Constructor  
     public static void main(String args[]) {  
     	JFrame frame = new JFrame();
