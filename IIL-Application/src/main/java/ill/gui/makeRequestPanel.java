@@ -73,7 +73,6 @@ public class makeRequestPanel extends Panel implements ActionListener {
         add(lb);
         add(resultText);  // add the ScrollPane to the panel, not the textResult
 
-
         //Set the panel size
         setSize(1024, 768);
 

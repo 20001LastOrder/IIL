@@ -83,7 +83,6 @@ public class deleteDeclinedRequestsPanel extends Panel implements ActionListener
         spLayout.putConstraint(SpringLayout.WEST,lb,10,SpringLayout.WEST,this);
         spLayout.putConstraint(SpringLayout.NORTH,resultText,20,SpringLayout.SOUTH,lb);
         spLayout.putConstraint(SpringLayout.WEST,resultText,20,SpringLayout.WEST,this);
-        //setVisible(true);
 
     }
 
