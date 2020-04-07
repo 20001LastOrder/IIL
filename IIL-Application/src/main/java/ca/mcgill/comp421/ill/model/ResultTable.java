@@ -39,7 +39,12 @@ public class ResultTable {
 			}
 		}
 	}
-	
+
+	public List<String> getKeyType()
+	{
+		return this.keyType;
+	}
+
 	public int getSize() {
 		Iterator<String> i = table.keySet().iterator();
 		String key = i.next();

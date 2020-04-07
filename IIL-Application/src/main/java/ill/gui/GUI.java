@@ -58,7 +58,7 @@ public class GUI {
 		 	frame = new JFrame();
 	        frame.setSize(1024, 768);
 			//TODO: set the application main page
-			setPanel(new makeRequestPanel());
+			setPanel(new findBookLocationPanel());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			// when close window, disconnect the database
