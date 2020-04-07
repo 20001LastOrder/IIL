@@ -10,6 +10,10 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
 public class GUI {
+	private static final String DB_URL = "jdbc:postgresql://comp421.cs.mcgill.ca:5432/cs421";
+	private static final String DB_USERNAME = "cs421g80";
+	private static final String DB_PASSWORD = "COMP421G80iil";
+	
 	private JFrame frame;
 	private Panel currentPanel;
 	private static GUI instance;
@@ -38,13 +42,14 @@ public class GUI {
 			public void run() {
 				try {
 					try {
-						DatabaseConnector.initilize("jdbc:postgresql://comp421.cs.mcgill.ca:5432/cs421", "cs421g80", "COMP421G80iil");
+						DatabaseConnector.initilize(DB_URL, DB_USERNAME, DB_PASSWORD);
+						instance = new GUI();
+						instance.frame.setVisible(true);
 					} catch (Exception e) {
+						e.printStackTrace();
+						System.out.println("Application Initializing Failed");
 						DatabaseConnector.close();
 					}
-					GUI window = new GUI();
-					instance = window;
-					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,7 +63,7 @@ public class GUI {
 		 	frame = new JFrame();
 	        frame.setSize(1024, 768);
 			//TODO: set the application main page
-			setPanel(new findBookLocationPanel());
+			setPanel(new CustomQueryPanel());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			// when close window, disconnect the database
@@ -72,7 +77,6 @@ public class GUI {
 					//e.getWindow().dispose();
 				}
 			});
-
 	}
 
 

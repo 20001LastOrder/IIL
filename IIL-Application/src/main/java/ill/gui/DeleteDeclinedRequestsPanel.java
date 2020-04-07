@@ -1,15 +1,20 @@
 package ill.gui;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.SpringLayout;
 
 
 /**
  * @author Ziqi
  */
-public class deleteDeclinedRequestsPanel extends Panel implements ActionListener {
+public class DeleteDeclinedRequestsPanel extends Panel implements ActionListener {
 
     //Initializing Components
     JLabel lb, queryLabel;
@@ -18,7 +23,7 @@ public class deleteDeclinedRequestsPanel extends Panel implements ActionListener
     JLabel resultText;
 
     //Creating Constructor for initializing JFrame components
-    deleteDeclinedRequestsPanel() {
+    DeleteDeclinedRequestsPanel() {
 
         queryLabel = new JLabel("Delete all declined requests by click \"Delete\" button");
         //queryLabel.setBounds(30, 20, 400, 20);

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * @author Ziqi
  */
-public class makeRequestPanel extends Panel implements ActionListener {
+public class MakeRequestPanel extends Panel implements ActionListener {
 
     //Initializing Components
     JLabel lb, queryLabel,resultText,emailLabel,isbnLabel;
@@ -19,7 +19,7 @@ public class makeRequestPanel extends Panel implements ActionListener {
     JButton requestBtn;
 
     //Creating Constructor for initializing JFrame components
-    makeRequestPanel() {
+    MakeRequestPanel() {
 
         queryLabel = new JLabel("<html>Please enter your email and a book isbnNumber, if any library that belongs to your institution<br>" +
                 " have such a book, make a request on one of the book copies of this Book.</html>");

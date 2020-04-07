@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,28 +22,50 @@ import de.vandermeer.asciitable.AsciiTable;
  */
 public class ResultTable {
 	HashMap<String, List<Object>> table;
-	List<String> keyType;
+	List<String> keyTypes;
 	
-	public ResultTable(List<String> keyType) {
+/*	public ResultTable(List<String> keyType) {
 		table = new HashMap<String, List<Object>>();
-		this.keyType = keyType;
+		this.keyTypes = keyType;
 		
 		for(String s : keyType) {
 			table.put(s, new ArrayList<Object>());
 		}
-	}
+	}*/
 	
-	public void loadResult(ResultSet result) throws SQLException {
+	public ResultTable(ResultSet result) throws SQLException {
+		// load all column names
+		table = new HashMap<String, List<Object>>();
+		keyTypes = new ArrayList<String>();
+		boolean firstRaw = true;
+		
 		while(result.next()) {
-			for(String s : keyType) {
+			// for the first row, get all column information
+			if(firstRaw) {
+				ResultSetMetaData rsmd = result.getMetaData();
+				if(rsmd.getColumnCount() == 0 || !result.next()) {
+					return;
+				}
+				
+				for(int i = 1; i <= rsmd.getColumnCount(); i++) {
+					keyTypes.add(rsmd.getColumnLabel(i));
+				}
+				
+				for(String s : keyTypes) {
+					table.put(s, new ArrayList<Object>());
+				}
+				firstRaw = false;
+			}
+			
+			for(String s : keyTypes) {
 				table.get(s).add(result.getObject(s));
 			}
 		}
 	}
 
-	public List<String> getKeyType()
+	public List<String> getKeyTypes()
 	{
-		return this.keyType;
+		return this.keyTypes;
 	}
 
 	public int getSize() {
@@ -80,7 +103,12 @@ public class ResultTable {
 	public List<List<String>> toList(){
 		List<List<String>> list = new ArrayList<List<String>>();
 		
-		for(String key : table.keySet()) {
+		for(String key : keyTypes) {
+			// if the table does not contain the key
+			if(!table.containsKey(key)) {
+				continue;
+			}
+			
 			List<String> column = new ArrayList<String>();
 			column.add(key);
 			column.addAll(table.get(key).stream().map(a -> a!=null? a.toString() : "").collect(Collectors.toList()));

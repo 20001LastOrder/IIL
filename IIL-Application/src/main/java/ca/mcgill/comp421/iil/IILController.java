@@ -36,8 +36,7 @@ public class IILController {
 							"FROM Books\n" +
 							"WHERE title = " + "'" + bookname + "'" + " )");
 			// retrieve the result row by row
-			table = new ResultTable(keyType);
-			table.loadResult(result);
+			table = new ResultTable(result);
 			result.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -171,14 +170,11 @@ public class IILController {
 		ResultSet result = null;
 		ResultTable table = null;
 		Statement stat = DatabaseConnector.getStatement();
-		List<String> keys = new ArrayList<String>(Arrays.asList("loanId", "startDate", "requiredReturnDate", "actualReturnDate", "fine", "isbnNumber", "title", "iname", "lname"));
-
 		try {
 			result = stat.executeQuery(String.format("SELECT l.loanId, l.startDate, l.requiredReturnDate, l.actualReturnDate, l.fine, b.isbnNumber, b.title, bc.iname, bc.lname "
 					+ "FROM Loans l, BookCopies bc, Books b "
 					+ "WHERE l.barcode = bc.barcode and bc.isbnNumber = b.isbnNumber and l.email = '%s'", email));
-			table = new ResultTable(keys);
-			table.loadResult(result);
+			table = new ResultTable(result);
 			result.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -254,15 +250,14 @@ public class IILController {
 		
 	  }
 
-	  public ResultTable customerQuery(List<String> columns, String query) {
+	  public ResultTable customerQuery(String query) {
 		  ResultSet result = null;
 			ResultTable table = null;
 			Statement stat = DatabaseConnector.getStatement();
 
 			try {
 				result = stat.executeQuery(query);
-				table = new ResultTable(columns);
-				table.loadResult(result);
+				table = new ResultTable(result);
 				result.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

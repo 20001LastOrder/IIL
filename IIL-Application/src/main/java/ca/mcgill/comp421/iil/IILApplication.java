@@ -43,13 +43,13 @@ public final class IILApplication {
 	
 	public static void performQueriesForVisualization() {
 		System.out.println("Library Count...");
-		ResultTable table = controller.customerQuery(Arrays.asList("libraryCount", "iname"), "SELECT iname, COUNT(*)AS libraryCount FROM libraries \r\n" + 
+		ResultTable table = controller.customerQuery("SELECT iname, COUNT(*)AS libraryCount FROM libraries \r\n" + 
 				"GROUP BY iname\r\n" + 
 				"HAVING COUNT(*)>1;");
 		table.toCsv("library.csv");
 		
 		System.out.println("Borrow Count...");
-		table = controller.customerQuery(Arrays.asList("borrowcount", "iname"), "WITH borrowcount AS (SELECT COUNT(*)as borrowrecord, email FROM loans\r\n" + 
+		table = controller.customerQuery("WITH borrowcount AS (SELECT COUNT(*)as borrowrecord, email FROM loans\r\n" + 
 				"GROUP BY email),\r\n" + 
 				"schoolborrowhistory AS (SELECT iname, COALESCE(borrowrecord, 0) AS borrowhistory FROM borrowcount bc FULL OUTER JOIN patrons p\r\n" + 
 				"ON bc.email = p.email) \r\n" + 
