@@ -24,6 +24,8 @@ public class GUI {
 		}
 		currentPanel = p;
 		frame.add(p);
+		p.repaint();
+		p.revalidate();
 	}
 	
 	public static GUI getInstance() {
@@ -63,7 +65,7 @@ public class GUI {
 		 	frame = new JFrame();
 	        frame.setSize(1024, 768);
 			//TODO: set the application main page
-			setPanel(new CustomQueryPanel());
+			setPanel(new MainMenuPanel());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 			// when close window, disconnect the database

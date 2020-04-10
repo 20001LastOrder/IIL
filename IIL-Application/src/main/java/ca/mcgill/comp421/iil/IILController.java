@@ -261,6 +261,7 @@ public class IILController {
 				result.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
+				table = new ResultTable(e.getMessage().toString());
 			}finally {
 				DatabaseConnector.closeStatement(stat);
 			}

@@ -55,8 +55,7 @@ public class AddNewPatronPanel extends Panel{
         backToMainBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: show main panel
-                //GUI.instance.setPanel(new mainPanel);
+            	GUI.getInstance().setPanel(new MainMenuPanel());
             }
         });
 

@@ -23,7 +23,8 @@ import de.vandermeer.asciitable.AsciiTable;
 public class ResultTable {
 	HashMap<String, List<Object>> table;
 	List<String> keyTypes;
-	
+	private String errorMessage;
+
 /*	public ResultTable(List<String> keyType) {
 		table = new HashMap<String, List<Object>>();
 		this.keyTypes = keyType;
@@ -61,6 +62,16 @@ public class ResultTable {
 				table.get(s).add(result.getObject(s));
 			}
 		}
+	}
+	
+	public ResultTable(String errorMessage){
+		table = new HashMap<String, List<Object>>();
+		keyTypes = new ArrayList<String>();
+		this.errorMessage = errorMessage;
+	}
+	
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 
 	public List<String> getKeyTypes()

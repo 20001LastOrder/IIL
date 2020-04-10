@@ -38,7 +38,14 @@ public class CustomQueryPanel extends Panel {
             public void actionPerformed(ActionEvent e) {
                 // call the query
                 ResultTable resultTable = IILApplication.getController().customerQuery(text.getText());
-                String[][] data = GUIUtil.to2DArray(resultTable);//new String[resultTable.getSize()][resultTable.getKeyTypes().size()];
+                String[][] data;
+                if(resultTable.getErrorMessage() == null) {
+                	data = GUIUtil.to2DArray(resultTable);
+                }else {
+                	data = new String[1][1];
+                	data[0][0] = resultTable.getErrorMessage();
+                }
+                
                 Object[] colName = resultTable.getKeyTypes().toArray();
                 if(colName.length == 0) {
                 	colName = new Object[1];
@@ -63,8 +70,7 @@ public class CustomQueryPanel extends Panel {
         backToMainBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: show main panel
-                //GUI.instance.setPanel(new mainPanel);
+            	GUI.getInstance().setPanel(new MainMenuPanel());
             }
         });
 

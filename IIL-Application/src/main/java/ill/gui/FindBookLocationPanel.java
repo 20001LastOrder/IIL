@@ -72,8 +72,7 @@ public class FindBookLocationPanel extends Panel implements ActionListener  {
         backToMainBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: show main panel
-                //GUI.instance.setPanel(new mainPanel);
+                GUI.getInstance().setPanel(new MainMenuPanel());
             }
         });
 
