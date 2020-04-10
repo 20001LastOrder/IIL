@@ -44,7 +44,7 @@ public class ResultTable {
 			// for the first row, get all column information
 			if(firstRaw) {
 				ResultSetMetaData rsmd = result.getMetaData();
-				if(rsmd.getColumnCount() == 0 || !result.next()) {
+				if(rsmd.getColumnCount() == 0) {
 					return;
 				}
 				
