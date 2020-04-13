@@ -21,7 +21,7 @@ public class MakeRequestPanel extends Panel implements ActionListener {
     //Creating Constructor for initializing JFrame components
     MakeRequestPanel() {
 
-        queryLabel = new JLabel("<html>Please enter your email and a book isbnNumber, if any library that belongs to your institution<br>" +
+        queryLabel = new JLabel("<html>Please enter your email and a book isbnNumber, if any library that does not belong to your institution<br>" +
                 " have such a book, make a request on one of the book copies of this Book.</html>");
         //queryLabel.setBounds(20, 20, 150, 20);
         emailLabel = new JLabel("Email:");

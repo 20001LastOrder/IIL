@@ -52,7 +52,7 @@ public class IILController {
 	 *     email, book isbnNumber
 	 *     Ex: 'ronny.mayer22@mail.com', '005-9-72-540567-1'
 	 * Output:
-	 *     Ask the patron to enter his/her email and book isbnNumber, if any libraries that belongs to
+	 *     Ask the patron to enter his/her email and book isbnNumber, if any libraries that does not belong to
 	 *     the patron's institution have such a book, make a request on one of the book copies of this Book.
 	 *     Otherwise, prompt "NO available bookcopy" message to the user.
 	 *
@@ -71,7 +71,7 @@ public class IILController {
 					"SELECT barcode\n" +
 							"FROM bookcopies Bc, patrons P\n" +
 							"WHERE Bc.isbnnumber = " + "'" + isbn + "'" + "\n" +
-							"  AND Bc.iname = P.iname AND P.email = " + "'" + email + "'" + "\n"
+							"  AND Bc.iname <> P.iname AND P.email = " + "'" + email + "'" + "\n"
 			);
 
 			// Get the current date
